@@ -1,9 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func matchingString(strings []string, queries []string) []int32 {
-
 	res := make(map[string]int32)
 	for _, v := range queries {
 		res[v] = 0
@@ -27,8 +29,9 @@ func matchingString(strings []string, queries []string) []int32 {
 }
 
 func main() {
+	start := time.Now()
 	myString := []string{"Reza", "abdas", "Reza", "abdas"}
 	myQuery := []string{"Reza", "lmn", "abdas"}
 	fmt.Println(matchingString(myString, myQuery))
-
+	fmt.Println(time.Since(start).Seconds())
 }
