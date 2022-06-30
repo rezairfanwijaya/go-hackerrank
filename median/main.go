@@ -25,6 +25,7 @@ func median(arr []int32) int32 {
 
 func main() {
 	num := []int32{5, 6, 7, 3, 4, 2, 1}
+	// 1, 2, 3, 4, 5, 6,
 	// nums := []int32{1, 2, 3, 4, 5}
 	// res := median(num)
 	// fmt.Println(res)
