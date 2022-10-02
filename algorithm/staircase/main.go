@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 )
 
 func stairCase(n int32) {
@@ -13,8 +12,6 @@ func stairCase(n int32) {
 		for j = 1; j <= n; j++ { // kolom
 			str := "#"
 
-			log.Println("i", i)
-			log.Println("n-j",n-j)
 			if n-j >= i {
 				str = " "
 			}
