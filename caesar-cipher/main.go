@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"strings"
+	"unicode"
 )
 
 func CaesarCipher(s string, k int32) string {
@@ -25,7 +26,22 @@ func CaesarCipher(s string, k int32) string {
 	// mencari kata berdasarkan inputan dan mencocokan dengan aplhabet yang sudah di acak
 	var tmp []string
 	for n := range s {
-		tmp = append(tmp, pairAlphabet[string(s[n])])
+		if string(s[n]) == "-" {
+			tmp = append(tmp, "-")
+		}
+
+		// cek uppercase
+		if unicode.IsUpper(rune(s[n])) {
+			// kira lowerkan dulu
+			lowerString := strings.ToLower(string(s[n]))
+
+			// cek ke pairing map
+			pairing := pairAlphabet[lowerString]
+			tmp = append(tmp, strings.ToUpper(pairing))
+		} else {
+			tmp = append(tmp, pairAlphabet[string(s[n])])
+		}
+
 	}
 
 	// hasil
@@ -34,6 +50,6 @@ func CaesarCipher(s string, k int32) string {
 }
 
 func main() {
-	s := "a-ku"
-	log.Println(CaesarCipher(s, 3))
+	s := "middle-Outz"
+	log.Println(CaesarCipher(s, 2))
 }
